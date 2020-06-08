@@ -1,20 +1,15 @@
-from fuck import *
-print_memory=False
-print('print_memory? T/F')
-a=input()
-if a=='T':
-    print_memory=True
+from brainFuckInterpreter.fuck import BrainF,prettyprint
+print('red==pointer, block==memory cell')
 print('plz enter the code')
 a=input()
-brainfuck=BrainF(a,print_memory=print_memory)
 while True:
     try:
-        for i in brainfuck:
+        for i in BrainF(a,print_memory=True,input_func=BrainF.input_in_ASCII,print_func=prettyprint):
             if i:
-                print(i)
+                print(i,end='')
     except Exception as e:
         print(f'ERROR:{str(e)}')
-    print('-----------------------')
+    print('\n-----------------------')
     print('rerun the same code? y/n/close')
     b=input()
     if b=='y':

@@ -1,12 +1,14 @@
 class BrainF():
-    def __init__(self,code,*,print_memory=True, input_func=None):
+    def __init__(self,code,*,print_memory=True, input_func=None, print_func=None):
         self.code=code
         self.memory=[0]
         self.MemoryIdx=0
         self.CodeIdx=0
         self.print_memory=print_memory
-
-        self.input_func=BrainF.input_in_ASCII if input_func==None else input_func
+        if print_memory and not print_func:
+            raise BrainF.InitializeError('a print function is expected.')
+        self.print_func=print_func
+        self.input_func=BrainF.input_in_ASCII if input_func is None else input_func
 
     #no self???
     def check(func):
@@ -125,7 +127,7 @@ class BrainF():
     def comment(self):
         pass
     def print(self):
-        print(self.memory)
+        self.print_func(self.memory,self.MemoryIdx)
 
     def __iter__(self):
         self.memory=[0]
@@ -148,11 +150,29 @@ class BrainF():
     def input_in_ASCII():
         return ord(input())
 
+
+
     class MemoryError(Exception):
         pass
 
     class InputError(Exception):
         pass
+    class InitializeError(Exception):
+        pass
 
 
-
+def prettyprint(memory,pointer_idx):
+    try:
+        from colored import fg, bg, attr
+    except:
+        import subprocess, sys
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'colored'])
+        from colored import fg, bg, attr
+    print()
+    for i in range(len(memory)):
+        if i==pointer_idx:
+            color=bg('red')
+        else:
+            color=""
+        print(color+'[ '+str(memory[i])+' ]'+attr(0),end=' ')
+    print()
