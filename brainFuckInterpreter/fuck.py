@@ -163,6 +163,7 @@ class BrainF():
 
 def prettyprint(memory,pointer_idx):
     try:
+        #raise ImportError('test installaion!!!')
         from colored import fg, bg, attr
     except:
         import subprocess, sys
