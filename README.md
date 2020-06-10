@@ -29,7 +29,7 @@ def __init__(self,code,*,print_memory=True, input_func=None, print_func=None)
 from brainFuckInterpreter.fuck import prettyprint
 ```
 ```python
-prettyprint(ur list representing memory to print, the index of cell(element) u want to emphasize)
+prettyprint(ur list representing memory to print, the index of cell (aka element) u want to emphasize)
 ```
 
 

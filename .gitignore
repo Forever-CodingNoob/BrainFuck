@@ -1,2 +1,6 @@
 .idea/
 __pycache__/
+brainFuckInterpreter/__pycache__
+BrainpyFuck.egg-info
+build
+dist
