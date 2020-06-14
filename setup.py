@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="BrainpyFuck",
-    version="0.0.3",
+    version="0.0.4",
     author="ForeverCdgNoob",
     author_email="johnnylin6526@gmail.com",
     description="A small brainfuck interpreter for python, including prettyprint inside",
