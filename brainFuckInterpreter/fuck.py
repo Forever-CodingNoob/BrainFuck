@@ -1,5 +1,5 @@
-class BrainF():
-    def __init__(self,code,*,print_memory=True, input_func=None, print_func=None):
+class BrainF:
+    def __init__(self,code,*,print_memory=True, print_func=None, input_func=None):
         self.code=code
         self.memory=[0]
         self.MemoryIdx=0
@@ -30,11 +30,7 @@ class BrainF():
         return wrap
 
     def run(self):
-        while True:
-            self.read()
-            print(self.memory)
-            if self.CodeIdx >= len(self.code):
-                return
+        return "".join((i for i in self))
     def read(self,inp='\0'):
         now=self.code[self.CodeIdx]
         if now == '>':

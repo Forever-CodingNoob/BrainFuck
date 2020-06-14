@@ -4,7 +4,7 @@ print('plz enter the code')
 a=input()
 while True:
     try:
-        for i in BrainF(a,print_memory=True,input_func=BrainF.input_in_ASCII,print_func=prettyprint):
+        for i in BrainF(a,print_memory=True,print_func=prettyprint,input_func=BrainF.input_in_ASCII):
             if i:
                 print(i,end='')
     except Exception as e:
