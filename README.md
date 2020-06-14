@@ -1,7 +1,7 @@
 # BrainFuckInterpreter
 ### standard usage:
 ```python
-from brainFuckInterpreter.fuck import BrainF
+from brainFuckInterpreter import BrainF
 ```
 easily get outputs:
 
@@ -26,7 +26,7 @@ def __init__(self,code,*,print_memory=True, input_func=None, print_func=None)
 
 ### PrettyPrint!!!
 ```python
-from brainFuckInterpreter.fuck import prettyprint
+from brainFuckInterpreter import prettyprint
 ```
 ```python
 prettyprint(ur list representing memory to print, the index of cell (aka element) u want to emphasize)

@@ -1,4 +1,4 @@
-from brainFuckInterpreter.fuck import BrainF,prettyprint
+from brainFuckInterpreter import BrainF,prettyprint
 print('red==pointer, block==memory cell')
 print('plz enter the code')
 a=input()
