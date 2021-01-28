@@ -1,5 +1,5 @@
 class BrainF:
-    def __init__(self,code,*,print_memory=True, print_func=None, input_func=None):
+    def __init__(self,*,code=None,print_memory=True, print_func=None, input_func=None):
         self.code=code
         self.memory=[0]
         self.MemoryIdx=0
@@ -126,9 +126,11 @@ class BrainF:
         self.print_func(self.memory,self.MemoryIdx)
 
     def __iter__(self):
-        self.memory=[0]
-        self.MemoryIdx=0
+        # self.memory=[0]
+        # self.MemoryIdx=0
         self.CodeIdx=0
+        if self.code is None:
+            raise BrainF.InitializeError('no code given!')
         while self.CodeIdx < len(self.code):
             try:
                 msg = self.read()
@@ -142,6 +144,12 @@ class BrainF:
             yield msg
             if self.print_memory:
                 self.print()
+    def execute(self,code):
+        self.code=code
+        result = self.run()
+        self.code=None
+        return result
+
     @staticmethod
     def input_in_ASCII():
         return ord(input())

@@ -3,7 +3,7 @@ print('plz enter the code')
 a=input()
 while True:
     try:
-        print(BrainF(a,print_memory=False,input_func=BrainF.input_in_ASCII).run())
+        print(BrainF(code=a,print_memory=False,input_func=BrainF.input_in_ASCII).run())
     except Exception as e:
         print(f'ERROR:{str(e)}')
     print('-----------------------')

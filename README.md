@@ -6,16 +6,16 @@ from brainFuckInterpreter import BrainF
 easily get outputs:
 
 ```python
-for msg in BrainF('yourcodehere'):
+for msg in BrainF(code='yourcodehere'):
     print(msg)  #msg is what the '.' outputs
 ```
 or use a comprehension
 ```python
-meg=[i for i in BrainF('yourcodehere') if i]
+meg=[i for i in BrainF(code='yourcodehere') if i]
 ```
 or just run it at once
 ```python
-print(BrainF('yourcodehere').run()) #what run() returns is a string
+print(BrainF(code='yourcodehere').run()) #what run() returns is a string
 ```
 #### attributes
 in the iterator called ```BrainF```:
