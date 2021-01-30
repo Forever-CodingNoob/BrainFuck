@@ -1,4 +1,4 @@
-from brainFuckInterpreter import BrainF
+from .fuck import BrainF
 # import sys
 # sys.setrecursionlimit(10**4)
 TEXT="""WOW! Is the flower very beautiful! very pretty! The flower have blue, tiffany blue, yellow, no green and red, this is very bad colour. Can you see? Have people on the flower, this is very bad, is very NO OK! The law are the very sad, don't small. Can you hear? Is flower sad, it very sad, is very NO OK!
@@ -65,6 +65,7 @@ def text2bf2(text,print_output=False,limit=2):
         execute(addMultipleOperatorInLoop(number=abs(dist),depth=1))
 
 
+
     execute('')
     for char in _ascii:
         addTo(char)
@@ -75,5 +76,57 @@ def text2bf2(text,print_output=False,limit=2):
         print()
     return code
 
+
+def text2bf3(text, print_output=False, limit=2):
+    _ascii = [ord(i) for i in text]
+    if print_output:
+        print(_ascii)
+    code = ""
+    brainF = BrainF(print_memory=False, input_func=BrainF.input_in_ASCII)
+
+    def execute(_code):
+        nonlocal code
+        code += _code
+        return brainF.execute(_code)
+
+    def addTo(target):
+        dist = target - brainF.memory[brainF.MemoryIdx]
+        operator = '+' if dist > 0 else '-'
+        if abs(dist) <= limit:
+            return execute(operator * abs(dist))
+
+
+        depth=1
+        number=abs(dist)
+        code_list=list()
+        while number>limit:
+            code_list.append('>' * depth + '+' * limit + \
+                '[' + '<' * depth + \
+                '?' + \
+                '>' * depth + '-]' + \
+                '<' * depth + operator * (number % limit)
+            )
+            depth+=1
+            number//=limit
+        code_list.append(operator * number)
+        full_code=code_list[0]
+        for i in range(1,len(code_list)):
+            full_code=full_code.replace('?',code_list[i])
+        # print(full_code)
+        execute(full_code)
+
+
+
+    execute('')
+    for char in _ascii:
+        addTo(char)
+        output_char = execute('.')
+        if print_output:
+            print(output_char, end='')
+    if print_output:
+        print()
+    return code
+
 # print(text2bf2(TEXT,print_output=True,limit=2))
 # print(text2bf(TEXT,print_output=True,limit_a=2,limit_b=10))
+# print(text2bf3(TEXT,print_output=True,limit=2))
