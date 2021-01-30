@@ -5,6 +5,7 @@ brainf=BrainF(print_memory=True,input_func=BrainF.input_in_ASCII,print_func=pret
 while True:
     try:
         print(brainf.execute(a))
+        # print(brainf.memory)
     except Exception as e:
         print(f'ERROR:{str(e)}')
     print('-----------------------')
